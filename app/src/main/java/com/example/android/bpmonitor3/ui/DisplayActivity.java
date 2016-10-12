@@ -260,27 +260,15 @@ public class DisplayActivity extends Activity {
 
         // Loop through the array of readings
 
+        // Adding child data: The systolic, diastolic, pulse, systolic status, diastolic status, the comments
+
         for(int i=0; i<mReadings.length; i++) {
 
             mDateTime = mReadings[i].getDateAndTime();
 
             listDataHeader.add(mDateTime);
 
-        }
-
-        // Adding child data: The systolic, diastolic, pulse, systolic status, diastolic status, the comments
-
-        // Loop through the array of readings
-
-        for(int i=0; i<mReadings.length; i++) {
-
-            mDateTime = mReadings[i].getDateAndTime();
-
             dateTimeArray[i] = mDateTime;
-
-        }
-
-        for(int i=0; i<dateTimeArray.length; i++){
 
             List<String> childrenItems = new ArrayList<String>();
 
@@ -293,12 +281,11 @@ public class DisplayActivity extends Activity {
 
             listDataChild.put(listDataHeader.get(i), childrenItems);
 
+
         }
 
 
-
-            // Figure out how to add the children to each header, later ....
-
+        // Figure out how to add the children to each header, later ....
 
 
         /* Fix this later too
