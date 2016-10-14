@@ -37,7 +37,7 @@ public class DisplayActivity extends Activity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, List<Reading>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,13 @@ public class DisplayActivity extends Activity {
         // Get the expandable list view
         expListView = (ExpandableListView) findViewById(android.R.id.list);
 
+
+
+        listDataChild = new HashMap<String, List<Reading>>();
+
         // Preparing list data
+
+
 
         prepareListData();
 
@@ -253,8 +259,13 @@ public class DisplayActivity extends Activity {
 
         String[] dateTimeArray = new String[mReadings.length];
 
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        for(int i=0; i<mReadings.length; i++){
+            dateTimeArray[i] = mReadings[i].getDateAndTime();
+        }
+
+        listDataHeader = (Arrays.asList(dateTimeArray));
+
+
 
         // Adding headers: The Date and Time blood pressure was taken.
 
@@ -264,20 +275,20 @@ public class DisplayActivity extends Activity {
 
         for(int i=0; i<mReadings.length; i++) {
 
-            mDateTime = mReadings[i].getDateAndTime();
+            //mDateTime = mReadings[i].getDateAndTime();
 
-            listDataHeader.add(mDateTime);
+            //listDataHeader.add(mDateTime);
 
-            dateTimeArray[i] = mDateTime;
+            //dateTimeArray[i] = mDateTime;
 
-            List<String> childrenItems = new ArrayList<String>();
+            List<Reading> childrenItems = new ArrayList<Reading>();
 
-            childrenItems.add("Systolic: " + mReadings[i].getSystolic()+"");
-            childrenItems.add("Diastolic: " + mReadings[i].getDiastolic()+"");
-            childrenItems.add("Pulse: " + mReadings[i].getPulse()+"");
-            childrenItems.add("Your systolic was " + mReadings[i].getSystolicBPStatus(mReadings[i].getSystolic()));
-            childrenItems.add("Your diastolic was " + mReadings[i].getDiastolicBPStatus(mReadings[i].getDiastolic()));
-            childrenItems.add("Description: " + mReadings[i].getDescription());
+            childrenItems.add(mReadings[i]);
+            //childrenItems.add("Diastolic: " + mReadings[i].getDiastolic()+"");
+            //childrenItems.add("Pulse: " + mReadings[i].getPulse()+"");
+            //childrenItems.add("Your systolic was " + mReadings[i].getSystolicBPStatus(mReadings[i].getSystolic()));
+            //childrenItems.add("Your diastolic was " + mReadings[i].getDiastolicBPStatus(mReadings[i].getDiastolic()));
+            //childrenItems.add("Description: " + mReadings[i].getDescription());
 
             listDataChild.put(listDataHeader.get(i), childrenItems);
 

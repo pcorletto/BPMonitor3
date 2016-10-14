@@ -9,6 +9,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.example.android.bpmonitor3.R;
+import com.example.android.bpmonitor3.model.Reading;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,10 +22,10 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<String>> _listDataChild;
+    private HashMap<String, List<Reading>> _listDataChild;
 
     public ExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, List<Reading>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -86,20 +87,43 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final String childText = (String) getChild(groupPosition, childPosition);
+        final Reading childText = (Reading) getChild(groupPosition, childPosition);
+
+        ViewHolder holder = new ViewHolder();
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_item, null);
 
+            holder.systolictv = (TextView) convertView.findViewById(R.id.systolictv);
+            holder.diastolictv = (TextView) convertView.findViewById(R.id.diastolictv);
+
+            convertView.setTag(holder);
+
+        } else{
+
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
+        //TextView txtListChild = (TextView) convertView
+          //      .findViewById(R.id.lblListItem);
 
-        txtListChild.setText(childText);
+        //txtListChild.setText(childText);
+
+        holder.systolictv.setText(childText.getSystolic()+"");
+        holder.diastolictv.setText(childText.getDiastolic()+"");
+
+
+
         return convertView;
+
+    }
+
+    private static class ViewHolder{
+
+        public TextView systolictv;
+        public TextView diastolictv;
 
     }
 
