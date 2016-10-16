@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.bpmonitor3.R;
@@ -96,8 +97,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_item, null);
 
-            holder.systolictv = (TextView) convertView.findViewById(R.id.systolictv);
-            holder.diastolictv = (TextView) convertView.findViewById(R.id.diastolictv);
+            holder.systolicReading = (TextView) convertView.findViewById(R.id.systolicReading);
+            holder.diastolicReading = (TextView) convertView.findViewById(R.id.diastolicReading);
+            holder.systolicStatusImageView = (ImageView) convertView.findViewById(R.id.systolicStatusImageView);
+            holder.diastolicStatusImageView = (ImageView) convertView.findViewById(R.id.diastolicStatusImageView);
+            holder.pulseLabel = (TextView) convertView.findViewById(R.id.pulseLabel);
+            holder.pulseReading = (TextView) convertView.findViewById(R.id.pulseReading);
+            holder.descriptionLabel = (TextView) convertView.findViewById(R.id.descriptionLabel);
+            holder.description = (TextView) convertView.findViewById(R.id.description);
 
             convertView.setTag(holder);
 
@@ -111,8 +118,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         //txtListChild.setText(childText);
 
-        holder.systolictv.setText(childText.getSystolic()+"");
-        holder.diastolictv.setText(childText.getDiastolic()+"");
+        holder.systolicReading.setText(childText.getSystolic()+"");
+        holder.diastolicReading.setText(childText.getDiastolic()+"");
+
+
+        holder.systolicStatusImageView.setImageResource(childText.getSystolicIconId());
+
+        holder.diastolicStatusImageView.setImageResource(childText.getDiastolicIconId());
+
+        holder.pulseLabel.setText("PULSE RATE: ");
+        holder.pulseReading.setText(childText.getPulse()+"");
+        holder.descriptionLabel.setText("DESCRIPTION");
+        holder.description.setText(childText.getDescription());
 
 
 
@@ -122,8 +139,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private static class ViewHolder{
 
-        public TextView systolictv;
-        public TextView diastolictv;
+        public TextView systolicReading;
+        public TextView diastolicReading;
+        ImageView systolicStatusImageView;
+        ImageView diastolicStatusImageView;
+        public TextView pulseLabel;
+        public TextView pulseReading;
+        public TextView descriptionLabel;
+        public TextView description;
 
     }
 

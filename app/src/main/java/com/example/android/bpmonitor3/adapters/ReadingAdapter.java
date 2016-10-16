@@ -48,7 +48,7 @@ public class ReadingAdapter extends BaseAdapter {
 
         if(convertView==null){
             //brand new
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.reading_list_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item, null);
 
             holder = new ViewHolder();
             holder.dateTimeLabel = (TextView) convertView.findViewById(R.id.averageLabel);
