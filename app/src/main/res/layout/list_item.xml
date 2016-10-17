@@ -34,7 +34,7 @@
             android:layout_alignRight="@+id/rectangle1ImageView"
             android:id="@+id/systolicReading"
             android:gravity="center"
-            android:textColor="#ff4e31ff"
+            android:textColor="#581845"
             android:textSize="50sp"
             tools:text="120"/>
 
@@ -56,11 +56,10 @@
         android:id="@+id/imageView1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="#aa000000" />
+        android:background="#581845" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -92,7 +91,7 @@
             android:textSize="50sp"
             tools:text="80"
             android:gravity="center"
-            android:textColor="#ff4e31ff"/>
+            android:textColor="#581845"/>
 
         <ImageView
             android:layout_width="150dp"
@@ -109,11 +108,10 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="#aa000000" />
+        android:background="#581845" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -130,7 +128,7 @@
             android:textSize="25sp"
             android:textStyle="bold"
             tools:text="PULSE RATE:"
-            android:textColor="#ff4e31ff"/>
+            android:textColor="#581845"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -139,7 +137,7 @@
             android:textSize="25sp"
             android:layout_toRightOf="@id/pulseLabel"
             tools:text="100"
-            android:textColor="#ff4e31ff"/>
+            android:textColor="#581845"/>
 
     </RelativeLayout>
 
@@ -153,7 +151,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:background="#aa000000" />
+        android:background="#581845" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -168,7 +166,7 @@
             android:gravity="center_horizontal"
             android:textStyle="bold"
             tools:text="DESCRIPTION:"
-            android:textColor="#ff4e31ff"/>
+            android:textColor="#581845"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -177,7 +175,7 @@
             android:textSize="15sp"
             android:layout_below="@id/descriptionLabel"
             tools:text="An optional description or comment would go here ... You could comment anything related to the time, day or circumstance when the blood pressure reading was taken"
-            android:textColor="#ff4e31ff"/>
+            android:textColor="#581845"/>
 
     </RelativeLayout>
 

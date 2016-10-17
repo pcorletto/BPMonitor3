@@ -1,14 +1,20 @@
 package com.example.android.bpmonitor3.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.bpmonitor3.R;
 import com.example.android.bpmonitor3.adapters.ExpandableListAdapter;
@@ -22,7 +28,7 @@ import java.util.List;
 import static com.example.android.bpmonitor3.ui.MainActivity.DAILY_READING;
 import static com.example.android.bpmonitor3.ui.MainActivity.INDEX;
 
-public class DisplayActivity extends Activity {
+public class DisplayActivity extends ActionBarActivity {
 
     private Button returnMainScreenButton;
     private ListView listView;
@@ -38,11 +44,21 @@ public class DisplayActivity extends Activity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<Reading>> listDataChild;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
+
+        // Get the toolbar
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_hamburger);
+        getSupportActionBar().setTitle("BPMonitor3");
+        toolbar.setSubtitle("PCorletto 2016");
 
         // Get the expandable list view
         expListView = (ExpandableListView) findViewById(android.R.id.list);
@@ -243,6 +259,49 @@ public class DisplayActivity extends Activity {
 
         */
 
+        placeFAB();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_display, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        switch(id) {
+
+            //noinspection SimplifiableIfStatement
+            case R.id.action_settings:
+
+            {
+                Toast.makeText(DisplayActivity.this, "Settings pressed!", Toast.LENGTH_LONG).show();
+                return true;
+
+            }
+            case R.id.action_search:
+            {
+
+                Toast.makeText(DisplayActivity.this, "Search button pressed!", Toast.LENGTH_LONG).show();
+                return true;
+
+            }
+
+
+
+            default:
+
+                return super.onOptionsItemSelected(item);
+
+        }
+
     }
 
     private void prepareListData(){
@@ -307,6 +366,21 @@ public class DisplayActivity extends Activity {
 
         */
 
+
+    }
+
+    public void placeFAB(){
+
+        FloatingActionButton myFAB = (FloatingActionButton) findViewById(R.id.myFAB);
+
+        myFAB.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View v) {
+                                         Toast.makeText(DisplayActivity.this, "You clicked me!", Toast.LENGTH_LONG).show();
+
+                                     }
+                                 }
+        );
 
     }
 
